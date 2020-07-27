@@ -75,9 +75,7 @@ def test_delete(client):
 	assert client.get(key) is None
 
 def test_list(client):
-	count = 0
-	for item in client.list():
-		count += 1
+	count = sum(1 for _ in client.list())
 	assert count >= 3
 
 def test_list_prefix(client):

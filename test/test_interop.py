@@ -32,7 +32,7 @@ def setup_function(function):
 	teardown_function(function)
 	os.mkdir(constants.kRepoDirectory)
 	os.mkdir(constants.kImportDirectory)
-	percepts = list()
+	percepts = []
 	for count in range(1, 4):
 		data_filename = '{:02}.txt'.format(count)
 		data_path = os.path.abspath(os.path.join(constants.kImportDirectory, data_filename))

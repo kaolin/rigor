@@ -27,7 +27,7 @@ class Runner(object):
 		self._logger = rigor.logger.get_logger('.'.join((__name__, self.__class__.__name__)))
 		self._algorithm = algorithm
 		if parameters is None:
-			parameters = dict()
+			parameters = {}
 		self._parameters = parameters
 		self._checkpoint_filename = checkpoint
 
@@ -47,7 +47,7 @@ class Runner(object):
 		""" This is the method called to run the algorithm. """
 		percepts = self.get_percepts()
 		checkpoint_status = ''
-		results = list()
+		results = []
 		checkpointer = NullCheckpointer()
 		if self._checkpoint_filename:
 			if os.path.exists(self._checkpoint_filename):

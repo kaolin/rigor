@@ -9,11 +9,11 @@ class PyTest(TestCommand):
 
 	def initialize_options(self):
 		TestCommand.initialize_options(self)
-		self.pytest_args = list()
+		self.pytest_args = []
 
 	def finalize_options(self):
 		TestCommand.finalize_options(self)
-		self.test_args = list()
+		self.test_args = []
 		self.test_suite = True
 
 	def run_tests(self):

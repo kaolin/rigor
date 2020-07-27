@@ -19,12 +19,8 @@ class RigorBase(object):
 		:param bool force_load: if :py:const:`False`, only fields that have already been loaded from the database are included. If :py:const:`True`, then all fields will be fetched and serialized.
 		:param set seen: Used for recursive calls, this is a set of object names that have already been serialized at a higher lever. This helps prevent infinite recursion. It shouldn't need to be used manually.
 		"""
-		if seen is None:
-			seen = set()
-		else:
-			seen = set(seen)
-
-		result = dict()
+		seen = set() if seen is None else set(seen)
+		result = {}
 		seen.add(self.__tablename__)
 		mapper = sa.orm.class_mapper(self.__class__)
 		state = sa.inspect(self)
@@ -53,11 +49,7 @@ class RigorBase(object):
 
 	@classmethod
 	def deserialize(cls, obj, seen=None, result=None):
-		if seen is None:
-			seen = set()
-		else:
-			seen = set(seen)
-
+		seen = set() if seen is None else set(seen)
 		if result is None:
 			result = cls()
 		seen.add(result.__tablename__)
@@ -69,7 +61,7 @@ class RigorBase(object):
 			if relationship.target.name in seen:
 				continue
 			seen.add(relationship.target.name)
-			if not name in obj:
+			if name not in obj:
 				continue
 			collection = getattr(result, name)
 			other_cls = relationship.argument()

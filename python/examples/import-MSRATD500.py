@@ -27,7 +27,7 @@ def main():
 		imagefile = truthfile.rsplit('.', 1)[0] + '.JPG' # simple is good :)
 		local_image_path = os.path.split(imagefile)
 		metadata = dict(kBaseMetadata)
-		annotations = list()
+		annotations = []
 		with open(truthfile,'r') as truth:
 			for row in truth:
 				(index,difficulty,x,y,w,h,rads) = string.split(row.rstrip())

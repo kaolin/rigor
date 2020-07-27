@@ -119,8 +119,7 @@ class ObjectAreaEvaluator(object):
 		match_ground_truth =  [list() for _ in range(ground_truth_count)]
 		match_detection = [list() for _ in range(detection_count)]
 
-		for gt_index in detection_sets_precision:
-			matching_detections_precision = detection_sets_precision[gt_index]
+		for gt_index, matching_detections_precision in detection_sets_precision.items():
 			if len(matching_detections_precision) == 1:
 				(detection_precision, ) = matching_detections_precision
 				if len(ground_truth_sets_precision[detection_precision]) == 1:
@@ -134,8 +133,7 @@ class ObjectAreaEvaluator(object):
 					for detection_precision in matching_detections_precision:
 						match_ground_truth[gt_index].append(detection_precision)
 						match_detection[detection_precision].append(gt_index)
-		for det_index in ground_truth_sets_recall:
-			matching_ground_truths_recall = ground_truth_sets_recall[det_index]
+		for det_index, matching_ground_truths_recall in ground_truth_sets_recall.items():
 			if len(matching_ground_truths_recall) == 1:
 				(ground_truth_recall, ) = matching_ground_truths_recall
 				if len(detection_sets_recall[ground_truth_recall]) == 1:
@@ -202,8 +200,7 @@ class ObjectAreaEvaluator(object):
 		match_detection = 0. # sum of MatchD
 
 		one_to_one_precision = set()
-		for gt_index in detection_sets_precision:
-			matching_detections_precision = detection_sets_precision[gt_index]
+		for gt_index, matching_detections_precision in detection_sets_precision.items():
 			if len(matching_detections_precision) == 1:
 				(detection_precision, ) = matching_detections_precision
 				if len(ground_truth_sets_precision[detection_precision]) == 1:
@@ -219,8 +216,7 @@ class ObjectAreaEvaluator(object):
 					match_detection += len(matching_detections_precision) * self.scatter_punishment(matching_detections_precision)
 
 		one_to_one_recall = set()
-		for det_index in ground_truth_sets_recall:
-			matching_ground_truths_recall = ground_truth_sets_recall[det_index]
+		for det_index, matching_ground_truths_recall in ground_truth_sets_recall.items():
 			if len(matching_ground_truths_recall) == 1:
 				(ground_truth_recall, ) = matching_ground_truths_recall
 				if len(detection_sets_recall[ground_truth_recall]) == 1:

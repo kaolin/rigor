@@ -72,9 +72,9 @@ class Importer(object):
 			with_data = ""
 			if self._import_data:
 				repository = urlsplit(percept.locator)
-				if repository.scheme == 's3':
-					if not self._s3 or self._s3.bucket != repository.netloc:
-						self._s3 = rigor.s3.DefaultS3Client(self._config, repository.netloc, percept.credentials)
+				if repository.scheme == 's3' and (not self._s3
+				                                  or self._s3.bucket != repository.netloc):
+					self._s3 = rigor.s3.DefaultS3Client(self._config, repository.netloc, percept.credentials)
 				source = metadata['source']
 				destination = percept.locator
 				with_data = " with data "

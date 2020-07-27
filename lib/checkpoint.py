@@ -117,7 +117,7 @@ class Checkpointer(object):
 		"""
 		timestamp, parameters = cls.read_header(old_file)
 		checkpointer = cls(parameters, new_file, delete_on_success)
-		entries = list()
+		entries = []
 		seen = set()
 		while True:
 			try:

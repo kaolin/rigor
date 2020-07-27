@@ -71,7 +71,7 @@ class BotoS3Client(RigorS3Client):
 
 	def __init__(self, config, bucket, credentials=None):
 		super(BotoS3Client, self).__init__(config, bucket, credentials)
-		connection_args = list()
+		connection_args = []
 		if credentials:
 			connection_args.append(config.get(credentials, 'aws_access_key_id'))
 			connection_args.append(config.get(credentials, 'aws_secret_access_key'))

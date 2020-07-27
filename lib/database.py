@@ -62,8 +62,7 @@ class BaseDatabase(object):
 		"""
 		args = [config.get('database', key) if ('database', key) in config else None for key in kDSNKeys]
 		args.append(database)
-		url = sa.engine.url.URL(*args)
-		return url
+		return sa.engine.url.URL(*args)
 
 	def __init__(self, database, config):
 		self.name = database

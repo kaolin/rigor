@@ -20,7 +20,7 @@ def main():
 	metadata = args.metadata
 	if os.path.isdir(metadata):
 		metadata_paths = glob.glob(os.path.join(metadata, '*.json'))
-		metadata = list()
+		metadata = []
 		for metadata_path in metadata_paths:
 			with open(metadata_path, "rb") as metadata_file:
 				metadata.append(json.load(metadata_file))

@@ -25,7 +25,7 @@ def main():
 		resolution_x = image.resolution.attrs['x']
 		resolution_y = image.resolution.attrs['y']
 		metadata = dict(kBaseMetadata)
-		annotations = list()
+		annotations = []
 		for roi in image.taggedrectangles.find_all('taggedrectangle'):
 			annotation = {"domain" : "text"}
 			annotation.update({"model" : roi.tag.text})

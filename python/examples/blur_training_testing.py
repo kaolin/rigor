@@ -30,8 +30,8 @@ def main():
 	db = Database.instance(args.database)
 	db_mapper = DatabaseMapper(db)
 	images = db_mapper.get_images_for_analysis(kDomain, limit=args.limit, random=args.random, tags_require=args.tags_require, tags_exclude=args.tags_exclude)
-	blur_images = list()
-	noblur_images = list()
+	blur_images = []
+	noblur_images = []
 	for image in images:
 		if image['annotations'][0]['model'] == 'blur':
 			blur_images.append(image)

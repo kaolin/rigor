@@ -1,7 +1,7 @@
 import os.path
 import json
 
-percepts = list()
+percepts = []
 for count in range(1, 11):
 	data_filename = '{:02}.txt'.format(count)
 	data_path = os.path.abspath(os.path.join('to_import', data_filename))

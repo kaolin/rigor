@@ -10,5 +10,4 @@ kConfig = RigorDefaultConfiguration(constants.kConfigFile)
 
 def get_database():
 	shutil.copyfile(constants.kFixtureFile, constants.kTestFile)
-	database = Database(constants.kTestFile, kConfig)
-	return database
+	return Database(constants.kTestFile, kConfig)
